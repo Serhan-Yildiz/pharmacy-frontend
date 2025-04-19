@@ -4,31 +4,37 @@
     <title>Giriş Yap</title>
     <link rel="stylesheet" href="styles.css">
     <script defer>
-        document.getElementById("login").addEventListener("submit", async function (e) {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-        const tc = formData.get("tc");
-
-        try {
-            const response = await fetch("https://pharmacy-backend-yeso.onrender.com/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ tc })
-            });
-
-            const result = await response.json();
-            if (response.ok) {
-            localStorage.setItem("patient", JSON.stringify(result.patient)); // Bilgileri sakla
-            window.location.href = "profile.html"; // Profile yönlendir
-            } else {
-            alert(result.error || "Giriş başarısız");
+        async function submitLogin(event) {
+            event.preventDefault();
+    
+            const tc = document.getElementById("tc-login").value.trim();
+            const name = document.getElementById("first-name").value.trim();
+            const surname = document.getElementById("last-name").value.trim();
+    
+            try {
+                const response = await fetch("https://pharmacy-backend-yeso.onrender.com/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ tc, name, surname })
+                });
+    
+                const result = await response.json();
+    
+                if (response.ok) {
+                    alert("Giriş başarılı!");
+                    localStorage.setItem("patient", JSON.stringify(result.patient));
+                    window.location.href = "profile.html";
+                } else {
+                    alert(result.error || "Giriş başarısız");
+                }
+            } catch (error) {
+                console.error("Giriş hatası:", error);
+                alert("Sunucuya bağlanılamadı.");
             }
-        } catch (error) {
-            alert("Sunucu hatası");
         }
-        });
-
-    </script>
+    </script>    
 </head>
 <body>
     <div id="login-form">
@@ -36,7 +42,7 @@
         <form id="login" onsubmit="submitLogin(event)">
             <div>
                 <label for="tc-login">TC Kimlik No:</label><br>
-                <input type="text" id="tc" name="tc" required maxlength="11" pattern="[0-9]{11}" title="11 haneli TC Kimlik numarası girin">
+                <input type="text" id="tc-login" name="tc" required maxlength="11" pattern="[0-9]{11}" title="11 haneli TC Kimlik numarası girin">
             </div>
             <div style="display: flex">
                 <div>
