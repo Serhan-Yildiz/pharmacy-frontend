@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kayıt Ol</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function togglePregnancySection() {
+            const gender = document.getElementById("gender").value;
+            const femaleOnlySection = document.getElementById("female-only");
+            if (gender === "kadın") {
+                femaleOnlySection.style.display = "block";
+            } else {
+                femaleOnlySection.style.display = "none";
+            }
+        }
+        async function submitRegister(event) {
+          event.preventDefault();
+          const form = document.getElementById("register");
+          const formData = new FormData(form);
+          const data = {
+            tc: formData.get("tc"),
+            name: formData.get("name"),
+            surname: formData.get("surname"),
+            age: Number(formData.get("age")),
+            height: Number(formData.get("height")),
+            weight: Number(formData.get("weight")),
+            gender: formData.get("gender"),
+            planningPregnancy: formData.get("planningPregnancy"),
+            pregnant: formData.get("pregnant"),
+            smoking: formData.get("smoking"),
+            alcohol: formData.get("alcohol"),
+            caffeine: formData.get("caffeine"),
+            grapefruit: formData.get("grapefruit"),
+            allergies: [...form.querySelectorAll("input[name='allergies']:checked")].map(el => el.parentElement.innerText.trim()),
+            pastIllnesses: [...form.querySelectorAll("input[name='pastIllnesses']:checked")].map(el => el.parentElement.innerText.trim()),
+            chronicIllnesses: formData.get("chronicIllnesses"),
+            herbalTeas: formData.get("herbalTeas"),
+            supplements: formData.get("supplements"),
+            geneticDiseases: formData.get("geneticDiseases"),
+            currentMedications: formData.get("currentMedications")
+          };
+      
+          try {
+            const response = await fetch("https://your-render-api-url.onrender.com/register", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(data)
+            });
+            const result = await response.json();
+            alert(result.message || "Kayıt başarılı");
+            form.reset();
+          } catch (error) {
+            alert("Kayıt sırasında hata oluştu");
+          }
+        }
+    </script>  
+</head>
+<body>
+    <h2>Kayıt Sayfası</h2>
+    <div id="register-form">
+    <h2>Hasta Kaydı</h2>
+    <form id="register" onsubmit="submitRegister(event)">
+        <label for="tc">TC Kimlik No:</label>
+        <input type="text" id="tc" name="tc" required>
+        <label for="name">Adı:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="surname">Soyadı:</label>
+        <input type="text" id="surname" name="surname" required>
+        <label for="age">Yaş:</label>
+        <input type="number" id="age" name="age" required>
+        <label for="height">Boy (cm):</label>
+        <input type="number" id="height" name="height" required>
+        <label for="weight">Kilo (kg):</label>
+        <input type="number" id="weight" name="weight" required>
+        <label for="gender">Cinsiyet:</label><br>
+        <select name="gender" id="gender" onchange="togglePregnancySection()" required>
+            <option disabled selected hidden>Seçiniz</option>
+            <option value="erkek">Erkek</option>
+            <option value="kadın">Kadın</option>
+        </select>
+        <div id="female-only" style="display:none;">
+            <label>Hamilelik düşünüyor musunuz?</label>
+            <select name="planningPregnancy">
+                <option disabled selected>Seçiniz</option>
+                <option>Evet</option>
+                <option>Hayır</option>
+            </select>
+            <label>Hamile misiniz?</label>
+            <select name="pregnant">
+                <option disabled selected>Seçiniz</option>
+                <option>Evet</option>
+                <option>Hayır</option>
+            </select>
+        </div>        
+        <label>Sigara kullanıyor musunuz?</label>
+        <select name="smoking" required>
+            <option disabled selected hidden>Seçiniz</option>
+            <option>Evet</option>
+            <option>Hayır</option>
+        </select>
+        <label>Alkol kullanıyor musunuz?</label>
+        <select name="alcohol" required>
+            <option disabled selected hidden>Seçiniz</option>
+            <option>Evet</option>
+            <option>Hayır</option>
+        </select>
+        <label>Kahve tüketimi:</label>
+        <select name="caffeine" required>
+            <option disabled selected hidden>Seçiniz</option>
+            <option>Yok</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6+</option>
+        </select>
+        <label>Greyfurt tüketimi:</label>
+        <select name="grapefruit" required>
+            <option disabled selected hidden>Seçiniz</option>
+            <option>Hiç</option>
+            <option>Az</option>
+            <option>Orta</option>
+            <option>Çok</option>
+        </select>
+        <label>Alerji Durumunuz:</label>
+        <div id="allergy-options">
+            <label><input type="checkbox" name="allergies">Fıstık</label>
+            <label><input type="checkbox" name="allergies">Polen</label>
+            <label><input type="checkbox" name="allergies">Soya</label>
+            <label><input type="checkbox" name="allergies">Laktoz</label>
+            <label><input type="checkbox" name="allergies">Gluten</label>
+            <label><input type="checkbox" name="allergies">Saman</label>
+        </div>
+        <label>Geçirilen hastalıklar:</label>
+        <div id="pastIllnesses">
+            <label><input type="checkbox" name="pastIllnesses">Mevsimsel Grip</label>
+            <label><input type="checkbox" name="pastIllnesses">Üretrit</label>
+            <label><input type="checkbox" name="pastIllnesses">Geçici İstemik Atak</label>
+        </div>
+        <label>Devamlı Kronik Hastalıklar</label>
+        <select name="chronicIllnesses" required>
+            <option disabled selected hidden>Seçiniz</option>
+            <option>Yok</option>
+            <option>Tip 1 Diyabet</option>
+            <option>Tip 2 Diyabet</option>
+        </select>
+        <label>Sürekli tükettiğiniz bitki çayları:</label>
+        <select name="herbalTeas" required>
+            <option disabled selected hidden>Seçiniz</option>
+            <option>Yok</option>
+            <option>Adaçayı</option>
+            <option>Papatya Çayı</option>
+            <option>Sarı Kantaron Çayı</option>
+        </select>
+        <label>Kullandığınız takviye edici gıdalar/OTC:</label>
+        <select name="supplements" required>
+            <option disabled selected hidden>Seçiniz</option>
+            <option>Yok</option>
+            <option>Magnezyum</option>
+        </select>
+        <label>Genetik hastalıklar:</label>
+        <select name="geneticDiseases" required>
+            <option disabled selected hidden>Seçiniz</option>
+            <option>Yok</option>
+            <option>Bel Fıtığı</option>
+            <option>Hipotroidi</option>
+            <option>Hipertansiyon</option>
+        </select>
+        <label>Şu anda kullandığınız ilaçlar:</label>
+        <select name="currentMedications" required>
+            <option disabled selected hidden>Seçiniz</option>
+            <option>Yok</option>
+            <option>MATOFIN XR TABLET 500 mg 100 tablet</option>
+            <option>ASPIRIN TABLET 100 mg 20 tablet</option>
+        </select>
+        <button type="submit">Kayıt Ol</button>
+        <button type="button" onclick="window.location.href = 'index.html'">Ana Sayfaya Dön</button>
+    </form>
+    </div>
+</body>
+</html>

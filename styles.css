@@ -1,0 +1,77 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+}
+
+input, select, textarea, button {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        margin: 20px;
+    }
+
+    input, select, textarea, button {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .container {
+        padding: 20px;
+        margin: 30px auto;
+    }
+}
+
+body.high-contrast {
+    background-color: #000;
+    color: #fff;
+}
+
+button.high-contrast {
+    background-color: #fff;
+    color: #000;
+}
+#allergy-options label {
+  display: inline-block;
+  background-color: #f0f0f0;
+  padding: 8px 12px;
+  margin: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+#allergy-options input[type="checkbox"] {
+  margin-right: 6px;
+}
