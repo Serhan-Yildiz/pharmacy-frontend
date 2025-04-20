@@ -8,11 +8,6 @@
     document.addEventListener("DOMContentLoaded", () => {
         const patientData = localStorage.getItem("patient");
     
-        if (!patientData) {
-            document.body.innerHTML = "<h2>Giriş Yapılmamış. Lütfen tekrar giriş yapın.</h2>";
-            return;
-        }
-    
         const patient = JSON.parse(patientData);
     
         // Sayfa içeriğine bilgileri yerleştir
