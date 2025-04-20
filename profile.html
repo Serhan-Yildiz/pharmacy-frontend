@@ -1,54 +1,112 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hasta Profili</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f7f9;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 500px;
-      margin: 50px auto;
-      background-color: #ffffff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h2 {
-      text-align: center;
-      color: #333;
-    }
-    .info {
-      margin: 20px 0;
-    }
-    .info p {
-      margin: 10px 0;
-      font-size: 16px;
-      color: #444;
-    }
-    .highlight {
-      font-weight: bold;
-      color: #d62828;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasta Profili</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        h1, h2, h3, h4 {
+            color: #2c3e50;
+        }
+
+        .profile-box {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+        }
+
+        .alert-box {
+            background-color: #fff4e5;
+            border-left: 6px solid #ff9800;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        textarea {
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            resize: vertical;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h2>Hasta Profili</h2>
-    <div class="info">
-      <p><strong>Hasta Adı:</strong> Ece Yılmaz</p>
-      <p><strong>Yaş:</strong> 38</p>
-      <p><strong>Cinsiyet:</strong> Kadın</p>
-      <p><strong>Kilo:</strong> 74 kg</p>
-      <p><strong>Boy:</strong> 1.65 m</p>
-      <p><strong>BMI:</strong> 27.2 <span class="highlight">(Fazla kilolu)</span></p>
-      <p><strong>Devam Eden Hastalık:</strong> Derin Ven Trombozu (DVT)</p>
+
+    <div class="profile-box">
+        <h1>Hasta Profili</h1>
+        <p><strong>Hasta Adı:</strong> Ece Yılmaz</p>
+        <p><strong>Yaş:</strong> 38</p>
+        <p><strong>Cinsiyet:</strong> Kadın</p>
+        <p><strong>Kilo:</strong> 74 kg</p>
+        <p><strong>Boy:</strong> 1.65 m</p>
+        <p><strong>BMI:</strong> 27.2 (Fazla kilolu)</p>
+        <p><strong>Devam Eden Hastalık:</strong> Derin Ven Trombozu (DVT)</p>
     </div>
-  </div>
+
+    <div class="profile-box">
+        <h2>Şikayetiniz Nedir?</h2>
+        <textarea id="complaint" name="complaint" rows="4" placeholder="Lütfen şikayetinizi buraya yazınız..."></textarea>
+    </div>
+
+    <div class="profile-box">
+        <h3>Kullandığı İlaçlar</h3>
+        <ul>
+            <li><strong>XARELTO FILM KAPLI TABLET 20 mg 28 tablet</strong></li>
+        </ul>
+    </div>
+
+    <div class="alert-box">
+        <h3>PharmaSafe Sistem Analizi:</h3>
+        <p><strong>Girilen ürün:</strong> Bromelain (ananas enzimi)<br>
+        <strong>Sistem, hastanın rivaroksaban kullandığını tespit etti.</strong></p>
+
+        <h4 style="color: red;">Uyarı:</h4>
+        <p><em>“Bromelain, antikoagülan ilaçlarla birlikte kullanıldığında pıhtılaşmayı daha fazla baskılayarak kanama riskini artırabilir. Bu ürün önerilmemelidir.”</em></p>
+
+        <h4>Sağlıklı Yaşam Önerileri:</h4>
+        <ul>
+            <li>Düşük yoğunlukta egzersizler yapın: Yürüyüş, yoga gibi egzersizler kilo kaybını destekler.</li>
+            <li>Dengeli beslenin: Lifli gıdalar ve yağsız proteinlerle beslenin, tuz ve şekerden kaçının.</li>
+            <li>Yeterli su için: Günde 8-10 bardak su içmek metabolizmayı hızlandırır.</li>
+            <li>Yeterli uyku uyuyun: Günde 7-9 saat uyumak sağlıklıdır.</li>
+            <li>Kanama riskini artıranlardan kaçının: Kan sulandırıcı ilaçlardan ve bitkilerden uzak durun.</li>
+            <li>Stresinizi yönetin: Meditasyon veya nefes egzersizleri yardımcı olabilir.</li>
+            <li>Düzenli doktor takibi yapın: Kan pıhtılaşma testleri önemlidir.</li>
+            <li>Sağlıklı ara öğünler tüketin: Fındık, yoğurt gibi besleyici atıştırmalıklar tercih edin.</li>
+            <li>Kafein ve alkolü sınırlayın: Aşırıya kaçmayın, ödemi engeller.</li>
+        </ul>
+
+        <h4>Bitkisel Öneriler:</h4>
+        <ul>
+            <li><strong>Yeşil Çay:</strong> Günde 1-2 fincan (200-400 ml)</li>
+            <li><strong>Maden Suyu:</strong> Günde 1 şişe (200–250 ml)</li>
+            <li><strong>Limonlu Su:</strong> Sabahları 1 bardak ılık suya birkaç damla limon</li>
+        </ul>
+
+        <p><strong>Not:</strong> Bu ürünler kan sulandırıcı etki yapmaz ve rivaroksaban ile güvenle kullanılabilir.</p>
+        <p><strong>Not:</strong> Bu bitkiler için önerilen dozlar günlük 2 fincanı geçmemelidir. Aksi bir durum veya yüksek dozda kullanımı, kanama riski oluşturmaz, ancak herhangi bir bitkisel takviye kullanmadan önce doktorunuza danışmanız önemlidir.</p>
+    </div>
+
 </body>
 </html>
