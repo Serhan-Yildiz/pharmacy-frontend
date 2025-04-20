@@ -3,43 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <title>Hasta Profili</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const patientData = localStorage.getItem("patient");
+    
+        if (!patientData) {
+            document.body.innerHTML = "<h2>Giriş Yapılmamış. Lütfen tekrar giriş yapın.</h2>";
+            return;
+        }
+    
+        const patient = JSON.parse(patientData);
+    
+        // Sayfa içeriğine bilgileri yerleştir
+        document.getElementById("tc").textContent = patient.tc;
+        document.getElementById("name").textContent = patient.name;
+        document.getElementById("surname").textContent = patient.surname;
+    });
+    </script>
+    
 </head>
 <body>
   <h2>Hasta Profili</h2>
   <div id="profile-container"></div>
-  <button onclick="logout()">Çıkış Yap</button>
-
-  <script>
-    const patient = JSON.parse(localStorage.getItem("patient"));
-    const container = document.getElementById("profile-container");
-
-    if (patient) {
-      container.innerHTML = `
-        <p><strong>Ad:</strong> ${patient.name}</p>
-        <p><strong>Soyad:</strong> ${patient.surname}</p>
-        <p><strong>TC Kimlik No:</strong> ${patient.tc}</p>
-        <p><strong>Yaş:</strong> ${patient.age}</p>
-        <p><strong>Boy:</strong> ${patient.height} cm</p>
-        <p><strong>Kilo:</strong> ${patient.weight} kg</p>
-        <p><strong>Cinsiyet:</strong> ${patient.gender}</p>
-        <p><strong>Sigara Kullanımı:</strong> ${patient.smoking}</p>
-        <p><strong>Alkol Tüketimi:</strong> ${patient.alcohol}</p>
-        <p><strong>Kafein Tüketimi:</strong> ${patient.caffeine}</p>
-        <p><strong>Grapefruit Tüketimi:</strong> ${patient.grapefruit}</p>
-        <p><strong>Bitki Çayları:</strong> ${patient.herbalTeas.join(", ") || "Yok"}</p>
-        <p><strong>Takviyeler:</strong> ${patient.supplements.join(", ") || "Yok"}</p>
-        <p><strong>Geçmiş Hastalıklar:</strong> ${patient.pastIllnesses.join(", ") || "Yok"}</p>
-        <p><strong>Mevcut İlaçlar:</strong> ${patient.currentMedications.join(", ") || "Yok"}</p>
-        <p><strong>Genetik Hastalıklar:</strong> ${patient.geneticDiseases}</p>
-      `;
-    } else {
-      container.innerHTML = "<p>Giriş yapılmamış. Lütfen tekrar giriş yapın.</p>";
-    }
-
-    function logout() {
-      localStorage.removeItem("patient");
-      window.location.href = "login.html";
-    }
-  </script>
+  <button onclick="window.location.href='index.html'">Çıkış Yap</button>
 </body>
 </html>
