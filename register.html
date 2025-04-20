@@ -28,19 +28,19 @@
                 height: Number(formData.get("height")),
                 weight: Number(formData.get("weight")),
                 gender: formData.get("gender"),
-                planningPregnancy: formData.get("gender") === "kadın" ? formData.get("planningPregnancy") : "Hayır",
-                pregnant: formData.get("gender") === "kadın" ? formData.get("pregnant") : "Hayır",
-                smoking: formData.get("smoking"),
-                alcohol: formData.get("alcohol"),
-                caffeine: formData.get("caffeine"),
-                grapefruit: formData.get("grapefruit"),
-                allergies: [...form.querySelectorAll("input[name='allergies']:checked")].map(el => el.parentElement.innerText.trim()) || ["Yok"],
-                pastIllnesses: [...form.querySelectorAll("input[name='pastIllnesses']:checked")].map(el => el.parentElement.innerText.trim()) || ["Yok"],
-                chronicIllnesses: formData.get("chronicIllnesses") || "Yok",
-                herbalTeas: formData.get("herbalTeas") || "Yok",
-                supplements: formData.get("supplements") || "Yok",
-                geneticDiseases: formData.get("geneticDiseases") || "Yok",
-                currentMedications: formData.get("currentMedications") || "Yok"
+                planningPregnancy: formData.get("gender") === "kadın" ? formData.get("planningPregnancy") : 0,
+                pregnant: formData.get("gender") === "kadın" ? formData.get("pregnant") : 0,
+                smoking: Boolean(formData.get("smoking")),
+                alcohol: Boolean(formData.get("alcohol")),
+                caffeine: Number(formData.get("caffeine")),
+                grapefruit: Number(formData.get("grapefruit")),
+                allergies: [...form.querySelectorAll("input[name='allergies']:checked")].map(el => el.parentElement.innerText.trim()) || [0],
+                pastIllnesses: [...form.querySelectorAll("input[name='pastIllnesses']:checked")].map(el => el.parentElement.innerText.trim()) || [0],
+                chronicIllnesses: formData.get("chronicIllnesses") || 0,
+                herbalTeas: formData.get("herbalTeas") || 0,
+                supplements: formData.get("supplements") || 0,
+                geneticDiseases: formData.get("geneticDiseases") || 0,
+                currentMedications: formData.get("currentMedications") || 0
             };
 
             try {
