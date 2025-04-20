@@ -2,25 +2,53 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hasta Profili</title>
-  <link rel="stylesheet" href="styles.css">
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const patientData = localStorage.getItem("patient");
-    
-        const patient = JSON.parse(patientData);
-    
-        // Sayfa içeriğine bilgileri yerleştir
-        document.getElementById("tc").textContent = patient.tc;
-        document.getElementById("name").textContent = patient.name;
-        document.getElementById("surname").textContent = patient.surname;
-    });
-    </script>
-    
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f7f9;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    .info {
+      margin: 20px 0;
+    }
+    .info p {
+      margin: 10px 0;
+      font-size: 16px;
+      color: #444;
+    }
+    .highlight {
+      font-weight: bold;
+      color: #d62828;
+    }
+  </style>
 </head>
 <body>
-  <h2>Hasta Profili</h2>
-  <div id="profile-container"></div>
-  <button onclick="window.location.href='index.html'">Çıkış Yap</button>
+  <div class="container">
+    <h2>Hasta Profili</h2>
+    <div class="info">
+      <p><strong>Hasta Adı:</strong> Ece Yılmaz</p>
+      <p><strong>Yaş:</strong> 38</p>
+      <p><strong>Cinsiyet:</strong> Kadın</p>
+      <p><strong>Kilo:</strong> 74 kg</p>
+      <p><strong>Boy:</strong> 1.65 m</p>
+      <p><strong>BMI:</strong> 27.2 <span class="highlight">(Fazla kilolu)</span></p>
+      <p><strong>Devam Eden Hastalık:</strong> Derin Ven Trombozu (DVT)</p>
+    </div>
+  </div>
 </body>
 </html>
