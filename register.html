@@ -28,19 +28,19 @@
                 height: Number(formData.get("height")),
                 weight: Number(formData.get("weight")),
                 gender: formData.get("gender"),
-                planningPregnancy: formData.get("gender") === "kadın" ? formData.get("planningPregnancy") : 0,
-                pregnant: formData.get("gender") === "kadın" ? formData.get("pregnant") : 0,
+                planningPregnancy: formData.get("gender") === "kadın" ? formData.get("planningPregnancy") : false,
+                pregnant: formData.get("gender") === "kadın" ? formData.get("pregnant") : false,
                 smoking: Boolean(formData.get("smoking")),
                 alcohol: Boolean(formData.get("alcohol")),
                 caffeine: Number(formData.get("caffeine")),
                 grapefruit: Number(formData.get("grapefruit")),
-                allergies: [...form.querySelectorAll("input[name='allergies']:checked")].map(el => el.parentElement.innerText.trim()) || [0],
-                pastIllnesses: [...form.querySelectorAll("input[name='pastIllnesses']:checked")].map(el => el.parentElement.innerText.trim()) || [0],
-                chronicIllnesses: formData.get("chronicIllnesses") || 0,
-                herbalTeas: formData.get("herbalTeas") || 0,
-                supplements: formData.get("supplements") || 0,
-                geneticDiseases: formData.get("geneticDiseases") || 0,
-                currentMedications: formData.get("currentMedications") || 0
+                allergies: [...form.querySelectorAll("input[name='allergies']:checked")].map(el => el.parentElement.innerText.trim()) || [false],
+                pastIllnesses: [...form.querySelectorAll("input[name='pastIllnesses']:checked")].map(el => el.parentElement.innerText.trim()) || [false],
+                chronicIllnesses: formData.get("chronicIllnesses"),
+                herbalTeas: formData.get("herbalTeas"),
+                supplements: formData.get("supplements"),
+                geneticDiseases: formData.get("geneticDiseases"),
+                currentMedications: formData.get("currentMedications")
             };
 
             try {
@@ -91,27 +91,27 @@
             <label>Hamilelik düşünüyor musunuz?</label>
             <select name="planningPregnancy">
                 <option disabled selected>Seçiniz</option>
-                <option value=1>Evet</option>
-                <option value=0>Hayır</option>
+                <option value=true>Evet</option>
+                <option value=false>Hayır</option>
             </select>
             <label>Hamile misiniz?</label>
             <select name="pregnant">
                 <option disabled selected>Seçiniz</option>
-                <option value=1>Evet</option>
-                <option value=0>Hayır</option>
+                <option value=true>Evet</option>
+                <option value=false>Hayır</option>
             </select>
         </div>        
         <label>Sigara kullanıyor musunuz?</label>
         <select name="smoking" required>
             <option disabled selected hidden>Seçiniz</option>
-            <option value=1>Evet</option>
-            <option value=0>Hayır</option>
+            <option value=true>Evet</option>
+            <option value=false>Hayır</option>
         </select>
         <label>Alkol tüketiyor musunuz?</label>
         <select name="alcohol" required>
             <option disabled selected hidden>Seçiniz</option>
-            <option value=1>Evet</option>
-            <option value=0>Hayır</option>
+            <option value=true>Evet</option>
+            <option value=false>Hayır</option>
         </select>
         <label>Kahve tüketimi:</label>
         <select name="caffeine" required>
@@ -150,14 +150,14 @@
         <label>Devamlı Kronik Hastalıklar</label>
         <select name="chronicIllnesses" required>
             <option disabled selected hidden>Seçiniz</option>
-            <option value=0>Yok</option>
+            <option value=false>Yok</option>
             <option>Tip 1 Diyabet</option>
             <option>Tip 2 Diyabet</option>
         </select>
         <label>Sürekli tükettiğiniz bitki çayları:</label>
         <select name="herbalTeas" required>
             <option disabled selected hidden>Seçiniz</option>
-            <option value=0>Yok</option>
+            <option value=false>Yok</option>
             <option>Adaçayı</option>
             <option>Papatya Çayı</option>
             <option>Sarı Kantaron Çayı</option>
@@ -165,13 +165,13 @@
         <label>Kullandığınız takviye edici gıdalar/OTC:</label>
         <select name="supplements" required>
             <option disabled selected hidden>Seçiniz</option>
-            <option value=0>Yok</option>
+            <option value=false>Yok</option>
             <option>Magnezyum</option>
         </select>
         <label>Genetik hastalıklar:</label>
         <select name="geneticDiseases" required>
             <option disabled selected hidden>Seçiniz</option>
-            <option value=0>Yok</option>
+            <option value=false>Yok</option>
             <option>Bel Fıtığı</option>
             <option>Hipotroidi</option>
             <option>Hipertansiyon</option>
@@ -179,7 +179,7 @@
         <label>Şu anda kullandığınız ilaçlar:</label>
         <select name="currentMedications" required>
             <option disabled selected hidden>Seçiniz</option>
-            <option value=0>Yok</option>
+            <option value=false>Yok</option>
             <option>MATOFIN XR TABLET 500 mg 100 tablet</option>
             <option>ASPIRIN TABLET 100 mg 20 tablet</option>
         </select>
