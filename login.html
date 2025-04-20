@@ -4,31 +4,6 @@
   <meta charset="UTF-8">
   <title>Giriş Yap</title>
   <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div id="login-form">
-    <h2>Giriş Yap</h2>
-    <form id="login" onsubmit="submitLogin(event)">
-      <div>
-        <label for="tc-login">TC Kimlik No:</label><br>
-        <input type="text" id="tc-login" name="tc" required maxlength="11" pattern="[0-9]{11}" title="11 haneli TC Kimlik numarası girin">
-      </div>
-      <div style="display: flex; gap: 1rem;">
-        <div>
-          <label for="first-name">Ad:</label><br>
-          <input type="text" id="first-name" name="name" required>
-        </div>
-        <div>
-          <label for="last-name">Soyad:</label><br>
-          <input type="text" id="last-name" name="surname" required>
-        </div>
-      </div>
-      <br>
-      <button type="submit">Giriş Yap</button>
-      <button type="button" onclick="window.location.href = 'index.html'">Ana Sayfaya Dön</button>
-    </form>
-  </div>
-
   <script>
     async function submitLogin(event) {
       event.preventDefault();
@@ -60,5 +35,29 @@
       }
     }
   </script>
+</head>
+<body>
+  <div id="login-form">
+    <h2>Giriş Yap</h2>
+    <form id="login" onsubmit="submitLogin(event)">
+      <div>
+        <label for="tc-login">TC Kimlik No:</label><br>
+        <input type="text" id="tc-login" name="tc" required maxlength="11" pattern="[0-9]{11}" title="11 haneli TC Kimlik numarası girin">
+      </div>
+      <div style="display: flex; gap: 1rem;">
+        <div>
+          <label for="first-name">Ad:</label><br>
+          <input type="text" id="first-name" name="name" required>
+        </div>
+        <div>
+          <label for="last-name">Soyad:</label><br>
+          <input type="text" id="last-name" name="surname" required>
+        </div>
+      </div>
+      <br>
+      <button type="submit">Giriş Yap</button>
+      <button type="button" onclick="window.location.href = 'index.html'">Ana Sayfaya Dön</button>
+    </form>
+  </div>
 </body>
 </html>
