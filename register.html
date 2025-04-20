@@ -28,19 +28,19 @@
                 height: Number(formData.get("height")),
                 weight: Number(formData.get("weight")),
                 gender: formData.get("gender"),
-                planningPregnancy: formData.get("planningPregnancy"),
-                pregnant: formData.get("pregnant"),
+                planningPregnancy: formData.get("gender") === "kadın" ? formData.get("planningPregnancy") : "Hayır",
+                pregnant: formData.get("gender") === "kadın" ? formData.get("pregnant") : "Hayır",
                 smoking: formData.get("smoking"),
                 alcohol: formData.get("alcohol"),
                 caffeine: formData.get("caffeine"),
                 grapefruit: formData.get("grapefruit"),
-                allergies: [...form.querySelectorAll("input[name='allergies']:checked")].map(el => el.parentElement.innerText.trim()),
-                pastIllnesses: [...form.querySelectorAll("input[name='pastIllnesses']:checked")].map(el => el.parentElement.innerText.trim()),
-                chronicIllnesses: formData.get("chronicIllnesses"),
-                herbalTeas: formData.get("herbalTeas"),
-                supplements: formData.get("supplements"),
-                geneticDiseases: formData.get("geneticDiseases"),
-                currentMedications: formData.get("currentMedications")
+                allergies: [...form.querySelectorAll("input[name='allergies']:checked")].map(el => el.parentElement.innerText.trim()) || ["Yok"],
+                pastIllnesses: [...form.querySelectorAll("input[name='pastIllnesses']:checked")].map(el => el.parentElement.innerText.trim()) || ["Yok"],
+                chronicIllnesses: formData.get("chronicIllnesses") || "Yok",
+                herbalTeas: formData.get("herbalTeas") || "Yok",
+                supplements: formData.get("supplements") || "Yok",
+                geneticDiseases: formData.get("geneticDiseases") || "Yok",
+                currentMedications: formData.get("currentMedications") || "Yok"
             };
 
             try {
@@ -61,7 +61,7 @@
             } catch (err) {
                 alert("Sunucuya bağlanırken hata oluştu.");
             }
-            }
+        }
     </script>
 </head>
 <body>
